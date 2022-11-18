@@ -28,7 +28,7 @@ public class SenhaService {
 
 	public Senha insert(SenhaDTO obj) {
 		
-		Senha objs = new Senha(null, obj.getDescricao(), obj.getSenha(), obj.getLogin(),obj.getAutor(), obj.getMaquina());
+		Senha objs = new Senha(null, obj.getDescricao(),obj.getLogin(), obj.getSenha(),obj.getAutor(), obj.getMaquina());
 
 		return this.rep.save(objs);
 
@@ -36,7 +36,7 @@ public class SenhaService {
 
 	public Senha update(SenhaDTO obj) {
 
-		Senha objs = new Senha(obj.getId(), obj.getDescricao(), obj.getSenha(), obj.getLogin(),obj.getAutor(), obj.getMaquina());
+		Senha objs = new Senha(obj.getId(), obj.getDescricao(),obj.getLogin(), obj.getSenha(),obj.getAutor(), obj.getMaquina());
 
 		return this.rep.save(objs);
 

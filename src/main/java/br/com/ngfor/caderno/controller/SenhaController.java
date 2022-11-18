@@ -45,6 +45,7 @@ public class SenhaController {
 
 	@PutMapping("update")
 	public URI update(@RequestBody SenhaDTO obj) {
+		
 
 		Senha objs = this.service.update(obj);
 

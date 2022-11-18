@@ -67,4 +67,12 @@ public class SenhaDTO {
 		this.maquina = maquina;
 	}
 
+	@Override
+	public String toString() {
+		return "SenhaDTO [id=" + id + ", descricao=" + descricao + ", login=" + login + ", senha=" + senha + ", autor="
+				+ autor + ", maquina=" + maquina + "]";
+	}
+	
+	
+
 }
