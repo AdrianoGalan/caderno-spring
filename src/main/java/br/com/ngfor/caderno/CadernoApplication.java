@@ -31,30 +31,6 @@ public class CadernoApplication {
 //	CommandLineRunner iniciaBaseDados(DefeitoRepository dr, MaquinaRepository mr, AlarmeRepository ar, UsuarioRepository ur) {
 //
 //		return args -> {
-//			
-//			
-//			Usuario login = new Usuario(null, "Adriano Galan", "dricoo@hotmail.com", pe.encode("senha"), 1, 0);
-//			login.addPerfil(Perfil.ADMIN);
-//			
-//			ur.save(login);
-//			
-//			
-////			Maquina m = new Maquina(null, "aaa");
-////			mr.save(m);
-////			
-////			Defeito d = new Defeito(null, "outro defeito", "arrumar a maquina",login, m);
-////			dr.save(d);
-////			
-////			Alarme a = new Alarme(null, "al", "maquina não liga", "reset maquina",login, m);
-////			ar.save(a);
-////			Alarme a1 = new Alarme(null, "al1", "maquina não liga1", "reset maquina1",login, m);
-////			ar.save(a1);
-////			Alarme a2 = new Alarme(null, "al2", "maquina não liga2", "reset maquina2",login, m);
-////			ar.save(a2);
-////			Alarme a3 = new Alarme(null, "al3", "maquina não liga3", "reset maquina3",login, m);
-////			ar.save(a3);
-////			
-//			
 //	
 //
 //		};
