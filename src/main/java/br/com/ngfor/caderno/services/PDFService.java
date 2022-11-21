@@ -29,6 +29,7 @@ public class PDFService {
 
 
 	public Document gerarPdf(HttpServletResponse response) throws DocumentException, IOException {
+		
 		Document doc = new Document();
 		
 		String name = "teste";
@@ -44,7 +45,8 @@ public class PDFService {
 		doc.open();
 		doc.add(new Paragraph("teste pdf"));
 		doc.close();
-		 return doc;
+		
+		return doc;
 		
 		
 		
