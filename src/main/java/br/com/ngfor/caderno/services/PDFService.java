@@ -1,24 +1,22 @@
 package br.com.ngfor.caderno.services;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.basic.BasicToolBarUI.DockingListener;
-import javax.validation.ReportAsSingleViolation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 
-import br.com.ngfor.caderno.DTO.AlarmeDTO;
-import br.com.ngfor.caderno.model.Alarme;
-import br.com.ngfor.caderno.model.Usuario;
 import br.com.ngfor.caderno.repository.AlarmeRepository;
 
 @Service
@@ -28,27 +26,29 @@ public class PDFService {
 	private AlarmeRepository rep;
 
 
-	public Document gerarPdf(HttpServletResponse response) throws DocumentException, IOException {
+	public ByteArrayInputStream gerarPdf() throws IOException {
 		
-		Document doc = new Document();
-		
-		String name = "teste";
-		
-		
-		//tipo de conteúdo
-		response.setContentType("application/pdf");
-		
-		//nome documento
-		response.addHeader("Content-Disposition", "inline;filename=\"" + name + "\"");
-		//criar o documento
-		PdfWriter.getInstance(doc, response.getOutputStream());
-		doc.open();
-		doc.add(new Paragraph("teste pdf"));
-		doc.close();
-		
-		return doc;
-		
-		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        PdfDocument pdfDocument = new PdfDocument(new PdfWriter(baos));
+        
+        pdfDocument.setDefaultPageSize(PageSize.A4.rotate());
+
+        Document document = new Document(pdfDocument);
+
+        Paragraph title = new Paragraph("Relatorio maquinas")
+                .setFontSize(28)
+                .setFont(PdfFontFactory.createFont(StandardFonts.COURIER_BOLD))
+                .setTextAlignment(TextAlignment.CENTER);
+
+        document.add(title);
+        document.add(new Paragraph("\n"));
+        document.add(new Paragraph("teste"));
+
+      
+        document.close();
+
+        return new ByteArrayInputStream(baos.toByteArray());
 		
 	}
 }
