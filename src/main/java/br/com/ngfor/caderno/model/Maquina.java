@@ -112,8 +112,19 @@ public class Maquina implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Maquina [id=" + id + ", sigla=" + sigla + ", alarmes=" + alarmes + ", defeitos=" + defeitos
-				+ ", senhas=" + senhas + ", procedimentos=" + procedimentos + "]";
+		
+		StringBuffer saida = new StringBuffer();
+		
+		saida.append("Maquina - ");
+		saida.append(sigla );
+		saida.append("\n\n Procedimentos- \n" );
+		
+		for (Procedimento procedimento : procedimentos) {
+			saida.append(procedimento.toString());
+		}
+		
+		
+		return saida.toString();
 	}
 
 }

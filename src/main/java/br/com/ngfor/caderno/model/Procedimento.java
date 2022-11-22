@@ -25,7 +25,7 @@ public class Procedimento implements Serializable {
 	@Column
 	private String descricao;
 
-	@Column(columnDefinition="TEXT")
+	@Column(columnDefinition = "TEXT")
 	private String procedimento;
 
 	@OneToOne()
@@ -108,8 +108,16 @@ public class Procedimento implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Procedimento [id=" + id + ", descricao=" + descricao + ", procedimento=" + procedimento + ", autor="
-				+ autor + ", maquina=" + maquina + "]";
+
+		StringBuffer saida = new StringBuffer();
+
+		saida.append("Descrição:\n");
+		saida.append(descricao);
+		saida.append("\n procedimento:\n");
+		saida.append(procedimento);
+		saida.append("\n----------------------------------------------------------- \n");
+
+		return saida.toString();
 	}
 
 }

@@ -28,12 +28,12 @@ public class PDFController {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Disposition", "inline; filename=relatorio.pdf");
-			System.err.println("foi");
+
 			return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
 					.body(new InputStreamResource(this.service.gerarPdf()));
 
 		} catch (Exception e) {
-			System.err.println(e);
+		
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
