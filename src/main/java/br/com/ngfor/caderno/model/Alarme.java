@@ -3,7 +3,6 @@ package br.com.ngfor.caderno.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +28,7 @@ public class Alarme implements Serializable {
 	@Column
 	private String descricao;
 
-	@Column(columnDefinition="TEXT")
+	@Column(columnDefinition = "TEXT")
 	private String solucao;
 
 	@OneToOne()
@@ -121,10 +120,19 @@ public class Alarme implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Alarme [id=" + id + ", codigo=" + codigo + ", descricao=" + descricao + ", solucao=" + solucao
-				+ ", autor=" + autor + ", maquina=" + maquina + "]";
-	}
 
-	
+		StringBuffer saida = new StringBuffer();
+
+		saida.append("Codigo => ");
+		saida.append(codigo);
+		saida.append("\nDescrição => ");
+		saida.append(descricao);
+		saida.append("\nSolucao => ");
+		saida.append(solucao);
+		saida.append("\n");
+
+		return saida.toString();
+
+	}
 
 }

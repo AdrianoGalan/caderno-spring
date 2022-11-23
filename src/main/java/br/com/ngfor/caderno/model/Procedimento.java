@@ -111,11 +111,13 @@ public class Procedimento implements Serializable {
 
 		StringBuffer saida = new StringBuffer();
 
-		saida.append("Descrição:\n");
+		saida.append("Descrição => ");
 		saida.append(descricao);
-		saida.append("\n procedimento:\n");
+		saida.append("\nProcedimento => ");
 		saida.append(procedimento);
-		saida.append("\n----------------------------------------------------------- \n");
+		saida.append("\n");
+
+	
 
 		return saida.toString();
 	}

@@ -44,10 +44,8 @@ public class ProcedimentoController {
 	@PostMapping()
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Procedimento insert(@RequestBody ProcedimentoDTO obj) {
-		
-		System.err.println(obj);
 
-		return this.service.incert(obj);
+		return this.service.insert(obj);
 
 	}
 	

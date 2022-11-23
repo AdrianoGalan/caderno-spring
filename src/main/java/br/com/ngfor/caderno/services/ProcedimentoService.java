@@ -26,7 +26,7 @@ public class ProcedimentoService {
 
 	}
 
-	public Procedimento incert(ProcedimentoDTO obj) {
+	public Procedimento insert(ProcedimentoDTO obj) {
 
 		Procedimento objs = new Procedimento(null, obj.getDescricao(), obj.getProcedimento(), obj.getAutor(),
 				obj.getMaquina());

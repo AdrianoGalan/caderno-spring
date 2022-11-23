@@ -124,11 +124,20 @@ public class Defeito implements Serializable {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "Defeito [id=" + id + ", descricao=" + descricao + ", solucao=" + solucao + ", autor=" + autor
-				+ ", maquina=" + maquina + "]";
+
+		StringBuffer saida = new StringBuffer();
+
+		
+		saida.append("Descrição => ");
+		saida.append(descricao);
+		saida.append("\nSolucao => ");
+		saida.append(solucao);
+		saida.append("\n");
+
+		return saida.toString();
+
 	}
 
 

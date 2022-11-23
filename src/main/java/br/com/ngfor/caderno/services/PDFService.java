@@ -3,7 +3,9 @@ package br.com.ngfor.caderno.services;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.StackWalker.Option;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -29,7 +31,7 @@ public class PDFService {
 	}
 
 	public ByteArrayInputStream gerarPdf() throws IOException {
-		
+
 		List<Maquina> maquinas = this.serviceMaq.getAll();
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -40,19 +42,41 @@ public class PDFService {
 
 		Document document = new Document(pdfDocument);
 
-		Paragraph title = new Paragraph("Relatorio maquinas").setFontSize(20)
+		Paragraph title = new Paragraph("Relatorio Maquinas").setFontSize(20)
 				.setFont(PdfFontFactory.createFont(StandardFonts.COURIER_BOLD)).setTextAlignment(TextAlignment.CENTER);
 
 		document.add(title);
-		document.add(new Paragraph("\n"));
-		
+
 		for (Maquina maquina : maquinas) {
+
 			document.add(new Paragraph(maquina.toString()));
-			document.add(new Paragraph("\n"));
+
 		}
-	
-		
-		
+
+		document.close();
+
+		return new ByteArrayInputStream(baos.toByteArray());
+
+	}
+
+	public ByteArrayInputStream gerarPdf(String sigla) throws IOException {
+
+		Maquina maquina = this.serviceMaq.findBySigla(sigla).get();
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+		PdfDocument pdfDocument = new PdfDocument(new PdfWriter(baos));
+
+		pdfDocument.setDefaultPageSize(PageSize.A4);
+
+		Document document = new Document(pdfDocument);
+
+		Paragraph title = new Paragraph("Relatorio Maquina").setFontSize(20)
+				.setFont(PdfFontFactory.createFont(StandardFonts.COURIER_BOLD)).setTextAlignment(TextAlignment.CENTER);
+
+		document.add(title);
+
+		document.add(new Paragraph(maquina.toString()));
 
 		document.close();
 

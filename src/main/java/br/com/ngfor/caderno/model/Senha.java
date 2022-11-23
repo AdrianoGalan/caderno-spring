@@ -22,7 +22,7 @@ public class Senha implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(columnDefinition="TEXT")
+	@Column(columnDefinition = "TEXT")
 	private String descricao;
 
 	@Column
@@ -120,8 +120,20 @@ public class Senha implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Senha [id=" + id + ", descricao=" + descricao + ", login=" + login + ", senha=" + senha + ", autor="
-				+ autor + ", maquina=" + maquina + "]";
+
+
+			StringBuffer saida = new StringBuffer();
+
+			saida.append("Login => ");
+			saida.append(login);
+			saida.append("\nSenha => ");
+			saida.append(senha);
+			saida.append("\nDescrição => ");
+			saida.append(descricao);
+			saida.append("\n");
+
+			return saida.toString();
+		
 	}
 
 }

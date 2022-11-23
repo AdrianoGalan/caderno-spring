@@ -24,40 +24,39 @@ public class MaquinaService {
 		return this.rep.findById(id);
 
 	}
-	
+
 	public Optional<Maquina> findBySigla(String sigla) {
-		
+
 		sigla = sigla.toUpperCase();
 		sigla = sigla.trim();
-		
+
 		Optional<Maquina> maquina = this.rep.findBySigla(sigla);
 
-		if(maquina != null) {
+		if (maquina != null) {
 			return maquina;
 		}
-		
+
 		return null;
 
 	}
 
-	public Maquina insert(Maquina obj) {
-		
-		obj.setSigla(obj.getSigla().trim());
-		
-		obj.setSigla(obj.getSigla().toUpperCase());
+	
 
+	public Maquina insert(Maquina obj) {
+
+		obj.setSigla(obj.getSigla().trim());
+
+		obj.setSigla(obj.getSigla().toUpperCase());
 
 		return this.rep.save(obj);
 
 	}
 
 	public Maquina update(Maquina obj) {
-		
+
 		obj.setSigla(obj.getSigla().trim());
-		
+
 		obj.setSigla(obj.getSigla().toUpperCase());
-		
-		
 
 		return this.rep.save(obj);
 

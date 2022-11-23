@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,13 +25,28 @@ public class PDFController {
 	}
 
 	@GetMapping("/gerar")
-	public ResponseEntity<InputStreamResource> report() {
+	public ResponseEntity<InputStreamResource> gerar() {
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Content-Disposition", "inline; filename=relatorio.pdf");
 
 			return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
 					.body(new InputStreamResource(this.service.gerarPdf()));
+
+		} catch (Exception e) {
+		
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@GetMapping("/gerar/{sigla}")
+	public ResponseEntity<InputStreamResource> gerar(@PathVariable(value = "sigla") String sigla) {
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Disposition", "inline; filename=relatorio.pdf");
+
+			return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+					.body(new InputStreamResource(this.service.gerarPdf(sigla)));
 
 		} catch (Exception e) {
 		
